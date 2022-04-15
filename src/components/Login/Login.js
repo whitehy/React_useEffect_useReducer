@@ -12,9 +12,17 @@ const Login = (props) => {
   const [formIsValid, setFormIsValid] = useState(false);
 
   useEffect(() => {
-    setFormIsValid(
-      enteredEmail.includes("@") && enteredPassword.trim().length > 6
-    );
+    const identifier = setTimeout(() => {
+      console.log("Checking form validity!");
+      setFormIsValid(
+        enteredEmail.includes("@") && enteredPassword.trim().length > 6
+      );
+    }, 500);
+
+    return () => {
+      console.log("Clean up");
+      clearTimeout(identifier);
+    }; //clean up function
   }, [enteredEmail, enteredPassword]); //dependency가 바뀔때마다 렌더링된다.
 
   const emailChangeHandler = (event) => {
