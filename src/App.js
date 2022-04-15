@@ -13,7 +13,7 @@ function App() {
     if (storedUserLoggedInformation === "1") {
       setIsLoggedIn(true);
     }
-  }, []);
+  }, []); // dependency가 없으므로 처음 한번만 실행된다.
 
   const loginHandler = (email, password) => {
     // We should of course check email and password
